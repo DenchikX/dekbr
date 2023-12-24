@@ -1,0 +1,6 @@
+image:
+  file: Dockerfile
+
+tasks:
+  - init: docker build -t docker.pkg.github.com/denchikx/dekbr/node-app:v1 . && docker push docker.pkg.github.com/denchikx/dekbr/node-app:v1
+  - init: docker build -t docker.pkg.github.com/denchikx/dekbr/python-app:v1 . && docker push docker.pkg.github.com/denchikx/dekbr/python-app:v1
