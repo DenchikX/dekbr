@@ -1,0 +1,27 @@
+name: ci
+on:
+  push:
+    branches: main
+    
+jobs:
+  login:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check
+        uses: docker/login-action@v3
+        with:
+         registry: ghcr.io
+         username: ${{ github.actor }}
+         password: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker build -t docker.pkg.github.com/denchikx/dekbr/node-app:v1
+      - run: docker push docker.pkg.github.com/denchikx/dekbr/node-app:v1
+      - run: docker build -t docker.pkg.github.com/denchikx/dekbr/python-app:v1
+      - run: docker push docker.pkg.github.com/denchikx/dekbr/python-app:v1
+      - name: send telegram message on push
+        uses: appleboy/telegram-acti@master
+        with:
+          to: 532075779
+          token: 5942378382:AAEzEru5YxurKawezrIquBDCKOB7mjcm4qc
+          message: ${{github.actor }}
+      
