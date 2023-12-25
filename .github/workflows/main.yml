@@ -14,10 +14,10 @@ jobs:
          registry: ghcr.io
          username: ${{ github.actor }}
          password: ${{ secrets.GITHUB_TOKEN }}
-      - run: docker build github.com/denchikx/dekbr/node-app:v1
-      - run: docker push github.com/denchikx/dekbr/node-app:v1
-      - run: docker build -t github.com/denchikx/dekbr/python-app:v1
-      - run: docker push github.com/denchikx/dekbr/python-app:v1
+      - run: docker build github.com/denchikx/dekbr/index:v1
+      - run: docker push github.com/denchikx/dekbr/index:v1
+      - run: docker build -t github.com/denchikx/dekbr/main:v1
+      - run: docker push github.com/denchikx/dekbr/main:v1
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
