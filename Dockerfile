@@ -4,16 +4,16 @@ WORKDIR /app
 
 COPY package.json .
 RUN npm install
-COPY . .
+COPY index.js .
 
 EXPOSE 5050
 
-CMD ["node", "index.js"]
+ENTRYPOINT ["node", "index.js"]
 
 FROM python:3
 
 WORKDIR /app
 
-COPY . .
+COPY main.py .
 
-CMD ["python", "main.py"]
+ENTRYPOINT ["python", "main.py"]
