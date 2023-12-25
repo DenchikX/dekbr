@@ -15,7 +15,7 @@ jobs:
          username: ${{ github.actor }}
          password: ${{ secrets.GITHUB_TOKEN }}
       - run: docker build -t ghcr.io/DenchikX/index:v1/dekbr
-      - run: docker push https://github.com/DenchikX/dekbr/blob/main/index.js
+      - run: docker push ghcr.io/DenchikX/index:v1/DenchikX/dekbr
       - run: docker build -t github.com/denchikx/dekbr/main:v1
       - run: docker push github.com/denchikx/dekbr/main:v1
       - name: send telegram message on push
